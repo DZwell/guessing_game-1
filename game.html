@@ -24,11 +24,13 @@
         var maxGuesses = 0;
 
       } else {
-        alert('I\m tired of your failed guesses.  The answer is TRUCK');
+        alert('I\'m tired of your failed guesses.  The answer is TRUCK');
         break;
       }
     }
-    alert('Correct! I can\'t believe you figured it out!');
+    if (guess === answer) {
+      alert('Correct! I can\'t believe you figured it out!');
+    }
 
   })();
 </script>
