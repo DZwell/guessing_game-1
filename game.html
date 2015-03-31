@@ -1,37 +1,63 @@
 <script>
   (function() {
 
-    alert("Welcome to I Spy! - a game of maddening frustration!")
-    var answer = 'truck';
+    alert("Welcome to I Spy! - a game of maddening frustration!");
+
+    var answer = ['truck', 'burrito', 'chair'];
+    var hints = []
+      hints[0] = 'Still not it! I spy something that moves on a road';
+      hints[1] = 'Nope! I spy something that rhymes with stuck and duck!';
+      hints[2] = 'Still not it! I spy something that you eat';
+      hints[3] = 'Nope! I spy Mexican food that rhymes with cheeto and is three syllables';
+      hints[4] = 'Still not it! I spy something near a desk';
+      hints[5] = 'Nope! I spy something you sit on';
 
     var maxGuesses = 3;
-
+    var winCounter = 0;
     var guess = prompt('I spy something out my window. What is it? It is a ________');
 
-// i know there has to be an easier way to do these conditions using a loop
 
-    while(guess !== answer) {
-      if (maxGuesses > 2) {
-        var guess = prompt('Sorry, that\'s not it! Keep guessing! It is a _________');
-        var maxGuesses = maxGuesses - 1;
+     function iSpy(ans, hint1, hint2, guess) {
+      while(guess.toLowerCase()  !== ans) {
+        if (maxGuesses > 2) {
+           guess  = prompt('Sorry, that\'s not it! Keep guessing! It is a _________');
+           maxGuesses = maxGuesses - 1;
 
-      } else if ((guess !== answer) && (maxGuesses > 1)) {
-        var guess = prompt('Still not it! I spy something that moves on a road');
-        var maxGuesses = maxGuesses - 1;
+        } else if ((guess  !== ans) && (maxGuesses > 1)) {
+           guess = prompt(hint1);
+           maxGuesses = maxGuesses - 1;
 
-      } else if ((guess !== answer) && (maxGuesses > 0)) {
-        var guess = prompt('Nope! I spy something that rhymes with stuck and duck!');
-        var maxGuesses = 0;
+        } else if ((guess !== ans) && (maxGuesses > 0)) {
+           guess = prompt(hint2);
+           maxGuesses = 0;
 
-      } else {
-        alert('I\'m tired of your failed guesses.  The answer is TRUCK');
-        break;
+        } else {
+          alert('I\'m tired of your failed guesses.  The answer is ' + ans + '!');
+          break;
+        }
       }
-    }
-    if (guess === answer) {
-      alert('Correct! I can\'t believe you figured it out!');
-    }
+      if (guess.toLowerCase() === ans) {
+        alert('Correct! I can\'t believe you figured it out!');
 
-  })();
+        winCounter = winCounter + 1;
+      }
+    };
+
+    iSpy(answer[0], hints[0], hints[1], guess);
+    maxGuesses = 3;
+
+    alert('Round two!');
+    guess = prompt('I spy something on a lunch table. What is it? It is a ________');
+    iSpy(answer[1], hints[2], hints[3], guess);
+    maxGuesses = 3;
+
+    alert('Round three!');
+    guess = prompt('I spy something in the office. What is it? It is a ________');
+    iSpy(answer[2], hints[4], hints[5], guess);
+
+
+    alert('Your score is: ' + winCounter + ' out of 3!');
+
+ })();
 </script>
 
