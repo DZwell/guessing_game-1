@@ -4,3 +4,8 @@ I call this game "I spy".
 I was looking out the window.  The game involves the user guessing the object that i saw.
 
 I used a while loop to go over possible conditions when the anwswer is not provided by the user and limit the number of possible guesses.
+
+
+
+
+Added more rounds to guessing game and stored data (answers, hints) in arrays to clean up code. Created function to run through game.
